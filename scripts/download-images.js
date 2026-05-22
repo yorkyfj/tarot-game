@@ -8,7 +8,7 @@ const { execSync } = require('child_process');
 
 const ZIP_URL =
   'https://github.com/metabismuth/tarot-json/releases/download/v0/cards.zip';
-const OUT_DIR = path.join(__dirname, '..', 'public', 'images', 'cards');
+const OUT_DIR = path.join(__dirname, '..', 'public', 'static', 'cards');
 const ZIP_PATH = path.join(OUT_DIR, 'cards.zip');
 
 const USER_AGENT = 'Mozilla/5.0 (compatible; tarot-game/1.0)';
@@ -113,7 +113,7 @@ async function main() {
     stdio: 'inherit',
   });
 
-  console.log(`\n已解压 ${names.length} 张牌面（大阿卡纳 + 小阿卡纳）到 public/images/cards/`);
+  console.log(`\n已解压 ${names.length} 张牌面（大阿卡纳 + 小阿卡纳）到 public/static/cards/`);
 
   const svgPath = path.join(OUT_DIR, 'bac.svg');
   if (fs.existsSync(svgPath)) {

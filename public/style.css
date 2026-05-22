@@ -66,7 +66,7 @@ h1 {
 
 .card-back {
   background-color: #1a0a2e;
-  background-image: url('/images/cards/bac.svg');
+  background-image: url('/static/cards/bac.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

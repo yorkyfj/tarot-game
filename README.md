@@ -11,7 +11,7 @@
 ```bash
 cd tarot-game
 npm install
-npm run build          # 生成牌库 + 解压 78 张牌面图（首次推荐）
+npm run build          # 生成牌库（Vercel 构建仅执行此项）
 npm start
 ```
 
@@ -23,7 +23,7 @@ npm start
 npm run build-cards
 ```
 
-仅更新牌面图时：
+本地缺少牌面图时（可选，需网络）：
 
 ```bash
 npm run download-images
@@ -54,7 +54,7 @@ npm run download-images
   "displayName": "死神（逆位）",
   "arcana": "major",
   "suit": null,
-  "image": "/images/cards/m13.jpg",
+  "image": "/static/cards/m13.jpg",
   "keywords": "抗拒结束、停滞",
   "meaning": "...",
   "message": "你抽到了「死神（逆位）」：..."
@@ -63,8 +63,9 @@ npm run download-images
 
 ## 牌面素材
 
-- 正面： [metabismuth/tarot-json](https://github.com/metabismuth/tarot-json) v0（`m00–m21`、`c/s/w/p01–14`）
-- 牌背：`public/images/cards/bac.svg`（可替换；`npm run download-images` 不会覆盖已有文件）
+- 正面：`public/static/cards/`（`m00–m21`、`c/s/w/p01–14`），已随仓库提交
+- 牌背：`public/static/cards/bac.svg`（可替换）
+- 缺图时前端回退：`/static/placeholder-card.svg` 或文字牌名
 
 ## 技术说明
 
@@ -82,7 +83,7 @@ npm run download-images
 4. Framework Preset 选 **Other**（使用 `vercel.json` 的 build 配置）
 5. 点击 **Deploy**；完成后分享 `https://你的项目.vercel.app`
 
-构建阶段会执行 `npm run build`（生成 `cards.json` 并从 `cards.zip` 解压 78 张 JPG）。若牌面 404，请在 Vercel Build Logs 中确认 `download-images` 是否成功（需能访问 GitHub releases）。
+构建阶段仅执行 `npm run build`（生成 `cards.json`），**不会**下载图片。牌面图使用仓库内 `public/static/cards/`。若某张图缺失，页面会显示占位图或牌名。
 
 推送 `main` 分支后 Vercel 会自动重新部署。
 
@@ -107,7 +108,8 @@ tarot-game/
 │   ├── card-meanings.js
 │   └── cards.json
 └── public/
-    ├── images/cards/
+    ├── static/cards/         # 牌面 JPG + bac.svg
+    ├── static/placeholder-card.svg
     ├── index.html
     ├── style.css
     └── app.js

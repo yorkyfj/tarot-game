@@ -12,6 +12,8 @@ const drawBtn = document.getElementById('draw-btn');
 const clearBtn = document.getElementById('clear-btn');
 const allowReversedEl = document.getElementById('allow-reversed');
 
+const PLACEHOLDER_IMAGE = '/static/placeholder-card.svg';
+
 let busy = false;
 
 function showError(msg) {
@@ -37,7 +39,15 @@ function showCardImage(image, name) {
   cardImgEl.onload = () => {
     cardNameEl.classList.add('hidden');
   };
-  cardImgEl.onerror = () => showNameFallback(name);
+  cardImgEl.onerror = () => {
+    const src = cardImgEl.getAttribute('src') || '';
+    if (src !== PLACEHOLDER_IMAGE && !src.endsWith(PLACEHOLDER_IMAGE)) {
+      cardImgEl.onerror = () => showNameFallback(name);
+      cardImgEl.src = PLACEHOLDER_IMAGE;
+      return;
+    }
+    showNameFallback(name);
+  };
   cardImgEl.src = image;
 }
 

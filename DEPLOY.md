@@ -30,6 +30,8 @@
 - [ ] 「抽一张牌」有解读与牌面图
 - [ ] 「允许逆位」开关有效
 
+构建仅运行 `npm run build-cards`，不下载图片。牌面使用仓库内 `public/static/cards/`。
+
 构建失败时：打开 **Deployments** → 最新记录 → **Building** → **View Build Logs**。
 
 ## 4. 分享给朋友

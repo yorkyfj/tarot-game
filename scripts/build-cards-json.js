@@ -95,7 +95,7 @@ function buildCard(entry) {
     arcana: isMajor ? 'major' : 'minor',
     suit: isMajor ? null : SUIT_MAP[entry.suit],
     rank: parseInt(entry.number, 10),
-    image: `/images/cards/${id}.jpg`,
+    image: `/static/cards/${id}.jpg`,
     keywords: text.keywords,
     meaning: text.meaning,
     keywordsReversed: text.keywordsReversed,
