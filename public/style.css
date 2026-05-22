@@ -85,10 +85,27 @@ h1 {
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card-img.is-ready {
+  opacity: 1;
 }
 
 .card-img.reversed {
   transform: rotate(180deg);
+}
+
+.card-front.is-loading .card-name {
+  color: #a89bc4;
+  animation: cardPulse 1s ease-in-out infinite;
+}
+
+@keyframes cardPulse {
+  50% {
+    opacity: 0.45;
+  }
 }
 
 .option-row {

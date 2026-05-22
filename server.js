@@ -64,7 +64,12 @@ function buildMessage(card, reversed) {
 }
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+  express.static(path.join(__dirname, 'public'), {
+    maxAge: process.env.NODE_ENV === 'production' ? '7d' : 0,
+    etag: true,
+  })
+);
 
 app.get('/api/cards', (req, res) => {
   const major = cards.filter((c) => c.arcana === 'major').length;
