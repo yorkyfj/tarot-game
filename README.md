@@ -74,13 +74,17 @@ npm run download-images
 
 ## 部署到 Vercel
 
-1. 将项目推送到 GitHub（仓库需包含 `tarot-game` 目录）
-2. 打开 [vercel.com](https://vercel.com) → **Add New Project** → 导入仓库
-3. **Root Directory** 设为 `tarot-game`
-4. Framework Preset 选 **Other**（使用本目录 `vercel.json` 的 build 配置）
-5. Deploy；完成后分享 `https://你的项目.vercel.app`
+1. 将项目推送到 GitHub（例如 [yorkyfj/tarot-game](https://github.com/yorkyfj/tarot-game)）
+2. 打开 [vercel.com](https://vercel.com) → 用 **Continue with GitHub** 登录 → **Add New Project** → 导入仓库
+3. **Root Directory**：
+   - 若仓库根目录就是本项目（独立 `tarot-game` 仓库）→ **留空**
+   - 若项目在 monorepo 子目录（如 `cursor_workspace/tarot-game`）→ 填 `tarot-game`
+4. Framework Preset 选 **Other**（使用 `vercel.json` 的 build 配置）
+5. 点击 **Deploy**；完成后分享 `https://你的项目.vercel.app`
 
 构建阶段会执行 `npm run build`（生成 `cards.json` 并从 `cards.zip` 解压 78 张 JPG）。若牌面 404，请在 Vercel Build Logs 中确认 `download-images` 是否成功（需能访问 GitHub releases）。
+
+推送 `main` 分支后 Vercel 会自动重新部署。
 
 本地预览 Vercel 环境（需安装 Vercel CLI）：
 
