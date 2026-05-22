@@ -15,6 +15,7 @@ const allowReversedEl = document.getElementById('allow-reversed');
 
 const PLACEHOLDER_IMAGE = '/static/placeholder-card.svg';
 const FLIP_MS = 300;
+const TEXT_REVEAL_MS = 400;
 const IMAGE_LOAD_TIMEOUT_MS = 20000;
 
 let busy = false;
@@ -47,6 +48,20 @@ function showNameFallback(name) {
   cardNameEl.classList.remove('hidden');
 }
 
+function showReadingLoading() {
+  readingEl.hidden = false;
+  readingEl.classList.add('is-loading');
+  readingNameEl.textContent = '正在抽牌…';
+  keywordsEl.textContent = '';
+  meaningEl.textContent = '';
+  messageEl.textContent = '';
+  hintEl.textContent = '正在为你抽取塔罗牌…';
+}
+
+function hideReadingLoading() {
+  readingEl.classList.remove('is-loading');
+}
+
 function updateReadingText(data) {
   const title = data.displayName ?? data.name;
   readingNameEl.textContent = title;
@@ -54,6 +69,7 @@ function updateReadingText(data) {
   meaningEl.textContent = data.meaning;
   messageEl.textContent = data.message;
   readingEl.hidden = false;
+  readingEl.classList.remove('is-loading');
 }
 
 function preloadImage(url) {
@@ -135,6 +151,7 @@ function resetUI() {
   cardEl.classList.remove('flipped');
   clearCardFace();
   readingEl.hidden = true;
+  readingEl.classList.remove('is-loading');
   readingNameEl.textContent = '';
   hintEl.textContent = '点击下方按钮抽牌';
   showError('');
@@ -148,6 +165,7 @@ async function draw() {
 
   clearCardFace();
   cardEl.classList.remove('flipped');
+  showReadingLoading();
 
   try {
     const res = await fetch('/api/draw', {
@@ -159,9 +177,6 @@ async function draw() {
     if (!res.ok) {
       throw new Error(data.error || '抽牌失败，请重试');
     }
-
-    updateReadingText(data);
-    hintEl.textContent = '解读已更新，牌面加载中…';
 
     let imagePreloaded = false;
     const preloadPromise = data.image
@@ -182,8 +197,14 @@ async function draw() {
     cardFrontEl?.classList.remove('is-loading');
 
     cardEl.classList.add('flipped');
+    await new Promise((r) => setTimeout(r, TEXT_REVEAL_MS));
+
+    hideReadingLoading();
+    updateReadingText(data);
     hintEl.textContent = '可再次抽牌，结果会更新';
   } catch (e) {
+    readingEl.hidden = true;
+    readingEl.classList.remove('is-loading');
     showError(e.message);
   } finally {
     busy = false;

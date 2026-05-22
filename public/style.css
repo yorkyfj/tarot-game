@@ -148,6 +148,19 @@ h1 {
   margin-bottom: 1rem;
 }
 
+.reading.is-loading .card-title {
+  text-align: center;
+  color: #a89bc4;
+  animation: cardPulse 1s ease-in-out infinite;
+}
+
+.reading.is-loading .keywords-label,
+.reading.is-loading .keywords,
+.reading.is-loading .meaning,
+.reading.is-loading .message {
+  display: none;
+}
+
 .card-title {
   font-size: 1.15rem;
   font-weight: 700;
