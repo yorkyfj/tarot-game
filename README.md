@@ -67,6 +67,7 @@ npm run compress-images   # 压缩 JPG，加快线上加载（维护用，不加
 - 正面：`public/static/cards/`（`m00–m21`、`c/s/w/p01–14`），已随仓库提交
 - 牌背：`public/static/cards/bac.svg`（可替换）
 - 缺图时前端回退：`/static/placeholder-card.svg` 或文字牌名
+- BGM：`public/static/audio/bgm.mp3`（[Mixkit — Spirit in the Woods](https://mixkit.co/free-stock-music/)，Mixkit License，默认关闭；右上角音符按钮开关）
 
 ## 技术说明
 

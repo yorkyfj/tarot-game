@@ -16,6 +16,49 @@ body {
   padding: 1.25rem;
 }
 
+.music-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 162, 39, 0.55);
+  background: rgba(26, 10, 46, 0.85);
+  color: #c9a227;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.music-btn:hover {
+  background: rgba(201, 162, 39, 0.15);
+  border-color: #c9a227;
+}
+
+.music-btn:focus-visible {
+  outline: 2px solid #c9a227;
+  outline-offset: 2px;
+}
+
+.music-icon {
+  display: block;
+}
+
+.music-btn.is-playing .music-icon {
+  animation: musicSpin 4s linear infinite;
+}
+
+@keyframes musicSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .container {
   max-width: 440px;
   width: 100%;

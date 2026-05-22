@@ -7,6 +7,22 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <button
+    type="button"
+    id="music-toggle"
+    class="music-btn"
+    aria-label="开启背景音乐"
+    aria-pressed="false"
+  >
+    <svg class="music-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"
+      />
+    </svg>
+  </button>
+  <audio id="bgm" src="/static/audio/bgm.mp3" preload="metadata" loop></audio>
+
   <main class="container">
     <h1>塔罗牌预测</h1>
     <p class="subtitle">娱乐向占卜</p>
@@ -42,6 +58,7 @@
       <button type="button" id="clear-btn" class="secondary-btn">清空</button>
     </section>
   </main>
+  <script src="bgm.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
