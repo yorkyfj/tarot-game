@@ -1,0 +1,18 @@
+{
+  "name": "tarot-game",
+  "version": "1.0.0",
+  "description": "塔罗牌预测小游戏（78 张，正逆位，可部署 Vercel）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build-cards": "node scripts/build-cards-json.js",
+    "download-images": "node scripts/download-images.js",
+    "build": "npm run build-cards && npm run download-images"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

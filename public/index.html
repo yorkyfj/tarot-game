@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>塔罗牌预测</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>塔罗牌预测</h1>
+    <p class="subtitle">娱乐向占卜</p>
+
+    <div class="card-scene">
+      <div id="card" class="card">
+        <div class="card-face card-back" aria-hidden="true"></div>
+        <div class="card-face card-front">
+          <img id="card-img" class="card-img" alt="" hidden />
+          <span id="card-name" class="card-name">—</span>
+        </div>
+      </div>
+    </div>
+
+    <section id="reading" class="reading" hidden>
+      <p class="card-title" id="reading-name"></p>
+      <p class="keywords-label">关键词</p>
+      <p id="keywords" class="keywords"></p>
+      <p id="meaning" class="meaning"></p>
+      <p id="message" class="message"></p>
+    </section>
+
+    <p id="hint" class="hint">点击下方按钮抽牌</p>
+    <p id="error-msg" class="error-msg" hidden></p>
+
+    <label class="option-row">
+      <input type="checkbox" id="allow-reversed" checked />
+      允许逆位
+    </label>
+
+    <section class="actions">
+      <button type="button" id="draw-btn" class="primary-btn">抽一张牌</button>
+      <button type="button" id="clear-btn" class="secondary-btn">清空</button>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
