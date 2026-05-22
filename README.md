@@ -27,6 +27,7 @@ npm run build-cards
 
 ```bash
 npm run download-images
+npm run compress-images   # 压缩 JPG，加快线上加载（维护用，不加入 Vercel build）
 ```
 
 ## 功能说明

@@ -7,6 +7,7 @@
     "start": "node server.js",
     "build-cards": "node scripts/build-cards-json.js",
     "download-images": "node scripts/download-images.js",
+    "compress-images": "node scripts/compress-images.js",
     "build": "npm run build-cards"
   },
   "keywords": [],
@@ -14,5 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
   }
 }
